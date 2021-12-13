@@ -1,0 +1,51 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.CoLeaner" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#0277bd</item>
+        <item name="colorPrimaryVariant">#58a5f0</item>
+        <item name="colorOnPrimary">#004c8c</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#1565c0</item>
+        <item name="colorSecondaryVariant">#5e92f3</item>
+        <item name="colorOnSecondary">#003c8f</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="circularProgressIndicatorStyle">@style/Widget.App.CircularProgressIndicator
+        </item>
+    </style>
+
+    <style name="CustomTextViewStyle">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="RoundedImageBg">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">5%</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.CustomImageViewBg">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="BottomSheetShape">
+        <item name="cornerFamilyTopLeft">cut</item>
+        <item name="cornerSizeTopLeft">10%</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.CardView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">5%</item>
+    </style>
+
+    <style name="Widget.App.CircularProgressIndicator" parent="Widget.MaterialComponents.CircularProgressIndicator">
+        <item name="color">#e8e8e8</item>
+        <item name="trackThickness">20dp</item>
+    </style>
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.co_leaner.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_coursesFragment"
+            app:destination="@id/coursesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/groupsFragment"
+        android:name="com.example.co_leaner.ui.GroupsFragment"
+        android:label="fragment_groups"
+        tools:layout="@layout/fragment_groups" />
+    <fragment
+        android:id="@+id/myCoursesFragment"
+        android:name="com.example.co_leaner.ui.MyCoursesFragment"
+        android:label="fragment_my_courses"
+        tools:layout="@layout/fragment_my_courses" />
+    <fragment
+        android:id="@+id/coursesFragment"
+        android:name="com.example.co_leaner.ui.CoursesFragment"
+        android:label="fragment_courses"
+        tools:layout="@layout/fragment_courses">
+        <argument
+            android:name="courseCategory"
+            android:defaultValue="IT &amp; Software"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/courseDetailFragment"
+        android:name="com.example.co_leaner.ui.CourseDetailFragment"
+        android:label="fragment_course_detail"
+        tools:layout="@layout/fragment_course_detail" />
+</navigation>
