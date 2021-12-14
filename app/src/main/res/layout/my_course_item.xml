@@ -15,7 +15,7 @@
         android:scaleType="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/RoundedImageBg"/>
+        app:shapeAppearanceOverlay="@style/RoundedImageBg" />
 
     <TextView
         android:id="@+id/txtClass"
@@ -25,7 +25,7 @@
         android:layout_marginTop="10dp"
         android:text="CLASS"
         android:textAllCaps="true"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintStart_toEndOf="@+id/imgCourseImage"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,4 +40,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgCourseImage"
         app:layout_constraintTop_toBottomOf="@+id/txtClass" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="&#8942;"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
