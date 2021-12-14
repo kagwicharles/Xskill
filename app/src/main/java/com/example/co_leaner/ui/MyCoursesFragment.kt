@@ -9,9 +9,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.co_leaner.R
 import com.example.co_leaner.adapter.MyCoursesAdapter
-import com.example.co_leaner.util.Utils
+import com.example.co_leaner.databinding.FragmentMyCoursesBinding
 import com.example.co_leaner.viewmodel.CoursesViewModel
 import com.example.co_leaner.viewmodel.CoursesViewModelFactory
 
@@ -19,21 +18,26 @@ class MyCoursesFragment : Fragment() {
 
     private lateinit var viewModel: CoursesViewModel
 
+    private var _binding: FragmentMyCoursesBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_my_courses, container, false)
-        val rvMyCourses: RecyclerView = view.findViewById(R.id.rvMyCourses)
-        inflater.inflate(R.layout.fragment_groups, container, false)
+        _binding = FragmentMyCoursesBinding.inflate(inflater, container, false)
+
+        val rvMyCourses: RecyclerView = binding.rvMyCourses
         val adapter = MyCoursesAdapter(context)
 
-        rvMyCourses.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        rvMyCourses.setHasFixedSize(true)
-        rvMyCourses.adapter = adapter
-        rvMyCourses.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        rvMyCourses.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            setHasFixedSize(true)
+            this.adapter = adapter
+            addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+            isNestedScrollingEnabled = false
+        }
 
         viewModel = ViewModelProviders.of(
             this,
@@ -42,6 +46,6 @@ class MyCoursesFragment : Fragment() {
         viewModel.myCourses?.observe(viewLifecycleOwner, {
             adapter.submitData(it)
         })
-        return view
+        return binding.root
     }
 }
