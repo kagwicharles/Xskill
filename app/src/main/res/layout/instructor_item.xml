@@ -20,7 +20,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="Display Name"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgInstructor"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,6 +31,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
         android:text="Job Title"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgInstructor"
         app:layout_constraintTop_toBottomOf="@+id/txtInstructorName" />
