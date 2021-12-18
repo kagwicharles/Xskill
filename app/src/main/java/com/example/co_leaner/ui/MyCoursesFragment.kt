@@ -29,7 +29,10 @@ class MyCoursesFragment : Fragment() {
         _binding = FragmentMyCoursesBinding.inflate(inflater, container, false)
 
         val rvMyCourses: RecyclerView = binding.rvMyCourses
-        val adapter = MyCoursesAdapter(context)
+        val adapter = MyCoursesAdapter(
+            MyCoursesAdapter.OnClickListener { openWebPage(it.courseUrl!!) },
+            context
+        )
 
         rvMyCourses.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -48,4 +51,6 @@ class MyCoursesFragment : Fragment() {
         })
         return binding.root
     }
+
+    private fun openWebPage(uri: String) {}
 }

@@ -11,7 +11,10 @@ import com.example.co_leaner.R
 import com.example.co_leaner.room.Course
 import com.example.co_leaner.util.Utils
 
-class MyCoursesAdapter(val context: Context?) :
+class MyCoursesAdapter(
+    private val onClickListener: OnClickListener,
+    val context: Context?
+) :
     RecyclerView.Adapter<MyCoursesAdapter.MyCoursesViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
@@ -30,6 +33,10 @@ class MyCoursesAdapter(val context: Context?) :
         Utils.setImage(context!!, myCourseItem.courseImage, holder.imgCourse)
         holder.txtClass.text = myCourseItem._class
         holder.txtCourseTitle.text = myCourseItem.courseTitle
+
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(myCourseItem)
+        }
     }
 
     override fun getItemCount(): Int = myCourses.size
@@ -38,6 +45,10 @@ class MyCoursesAdapter(val context: Context?) :
         var imgCourse: ImageView = itemView.findViewById(R.id.imgCourseImage)
         var txtCourseTitle: TextView = itemView.findViewById(R.id.txtCourseTitle)
         var txtClass: TextView = itemView.findViewById(R.id.txtClass)
+    }
+
+    class OnClickListener(val clickListener: (course: Course) -> Unit) {
+        fun onClick(course: Course) = clickListener(course)
     }
 
     fun submitData(myCourses: List<Course>) {
