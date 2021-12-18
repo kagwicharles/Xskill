@@ -34,10 +34,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:text="Full course title"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgCourseImage"
-        tools:layout_editor_absoluteY="49dp" />
+        app:layout_constraintTop_toBottomOf="@+id/txtClass" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
