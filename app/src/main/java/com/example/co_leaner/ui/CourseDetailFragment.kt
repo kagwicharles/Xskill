@@ -28,6 +28,7 @@ class CourseDetailFragment : Fragment() {
     private var courseClass: String? = null
     private var courseTitle: String? = null
     private var courseImage: String? = null
+    private var courseUrl: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,6 +55,7 @@ class CourseDetailFragment : Fragment() {
                 courseClass = coursesResponse?._class
                 courseTitle = coursesResponse?.title
                 courseImage = coursesResponse?.image_480x270
+                courseUrl = coursesResponse?.url
 
                 binding.txtCourseTitle.text = courseTitle
                 Utils.setImage(requireContext(), courseImage, binding.imgCourseImage)
@@ -87,7 +89,8 @@ class CourseDetailFragment : Fragment() {
                         courseId = courseId,
                         _class = courseClass,
                         courseTitle = courseTitle,
-                        courseImage = courseImage
+                        courseImage = courseImage,
+                        courseUrl = courseUrl
                     )
                 )
             }
