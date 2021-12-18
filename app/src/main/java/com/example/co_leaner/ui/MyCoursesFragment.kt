@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.co_leaner.R
 import com.example.co_leaner.adapter.MyCoursesAdapter
 import com.example.co_leaner.databinding.FragmentMyCoursesBinding
 import com.example.co_leaner.viewmodel.CoursesViewModel
@@ -52,5 +54,12 @@ class MyCoursesFragment : Fragment() {
         return binding.root
     }
 
-    private fun openWebPage(uri: String) {}
+    private fun openWebPage(uri: String) {
+        val navHostFragment =
+            activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
+        val navController = navHostFragment?.navController
+        val bundle = Bundle()
+        bundle.putString("COURSE_URL", activity?.getString(R.string.udemy_base_url, uri))
+        navController?.navigate(R.id.webViewFragment, bundle)
+    }
 }

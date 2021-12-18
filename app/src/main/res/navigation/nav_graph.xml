@@ -39,4 +39,9 @@
         android:name="com.example.co_leaner.ui.CourseDetailFragment"
         android:label="fragment_course_detail"
         tools:layout="@layout/fragment_course_detail" />
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.example.co_leaner.WebViewFragment"
+        android:label="fragment_web_view"
+        tools:layout="@layout/fragment_web_view" />
 </navigation>
