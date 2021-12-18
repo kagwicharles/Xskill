@@ -1,5 +1,7 @@
 package com.example.co_leaner.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -55,11 +57,11 @@ class MyCoursesFragment : Fragment() {
     }
 
     private fun openWebPage(uri: String) {
-        val navHostFragment =
-            activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
-        val navController = navHostFragment?.navController
-        val bundle = Bundle()
-        bundle.putString("COURSE_URL", activity?.getString(R.string.udemy_base_url, uri))
-        navController?.navigate(R.id.webViewFragment, bundle)
+        startActivity(
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse(activity?.getString(R.string.udemy_base_url, uri))
+            )
+        )
     }
 }
