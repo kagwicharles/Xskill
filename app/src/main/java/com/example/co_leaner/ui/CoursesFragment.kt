@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.co_leaner.R
 import com.example.co_leaner.adapter.CoursesAdapter
+import com.example.co_leaner.util.Utils
 import com.example.co_leaner.viewmodel.CoursesViewModel
 import com.example.co_leaner.viewmodel.CoursesViewModelFactory
 import com.google.android.material.progressindicator.LinearProgressIndicator
@@ -25,7 +26,7 @@ import kotlinx.coroutines.launch
 class CoursesFragment : Fragment() {
 
     private lateinit var viewModel: CoursesViewModel
-    
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,10 +39,7 @@ class CoursesFragment : Fragment() {
         progressIndicator?.visibility = GONE
 
         val courseCategory = arguments?.getString("COURSE_CATEGORY")
-        val toolbar = (activity as AppCompatActivity).supportActionBar
-        toolbar?.title = courseCategory
-        toolbar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_40)
-        toolbar?.setDisplayHomeAsUpEnabled(true)
+        Utils.setToolbar(this, R.drawable.ic_baseline_arrow_back_ios_40, courseCategory)
 
         val adapter = CoursesAdapter(CoursesAdapter.OnClickListener {
             openCourseDetailFragment(it!!.id)
