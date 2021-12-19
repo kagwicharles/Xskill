@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.co_leaner.R
@@ -26,7 +25,7 @@ class HomeFragment : Fragment() {
         )
 
         val adapter = CategoriesAdapter(CategoriesAdapter.OnClickListener {
-            openCoursesFragment(it.categoryName)
+            Utils.openFragment(this, setBundle(it.categoryName), R.id.coursesFragment)
         }, context, getCourseCategories())
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.rvCourseCategories)
@@ -36,12 +35,9 @@ class HomeFragment : Fragment() {
         return view
     }
 
-    private fun openCoursesFragment(courseCategory: String) {
-        val navHostFragment =
-            activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
-        val navController = navHostFragment?.navController
+    private fun setBundle(courseCategory: String): Bundle {
         val bundle = Bundle()
         bundle.putString("COURSE_CATEGORY", courseCategory)
-        navController?.navigate(R.id.coursesFragment, bundle)
+        return bundle
     }
 }

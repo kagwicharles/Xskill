@@ -9,7 +9,6 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.NavHostFragment
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,7 +40,11 @@ class CoursesFragment : Fragment() {
         Utils.setToolbar(this, R.drawable.ic_baseline_arrow_back_ios_40, courseCategory)
 
         val adapter = CoursesAdapter(CoursesAdapter.OnClickListener {
-            openCourseDetailFragment(it!!.id)
+            Utils.openFragment(
+                this,
+                setBundle(it!!.id),
+                R.id.courseDetailFragment
+            )
         }, context)
 
         rvCourses.layoutManager = GridLayoutManager(context, 2)
@@ -81,12 +84,9 @@ class CoursesFragment : Fragment() {
         }
     }
 
-    private fun openCourseDetailFragment(courseId: Int) {
-        val navHostFragment =
-            activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
-        val navController = navHostFragment?.navController
+    private fun setBundle(courseId: Int): Bundle {
         val bundle = Bundle()
         bundle.putInt("COURSE_ID", courseId)
-        navController?.navigate(R.id.courseDetailFragment, bundle)
+        return bundle
     }
 }
