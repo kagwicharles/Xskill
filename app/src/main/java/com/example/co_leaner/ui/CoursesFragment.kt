@@ -7,7 +7,6 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
@@ -81,7 +80,6 @@ class CoursesFragment : Fragment() {
                 VISIBLE else progressIndicator?.visibility = GONE
         }
     }
-
 
     private fun openCourseDetailFragment(courseId: Int) {
         val navHostFragment =
