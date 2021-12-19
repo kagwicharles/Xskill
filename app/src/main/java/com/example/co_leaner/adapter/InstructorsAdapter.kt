@@ -12,6 +12,7 @@ import com.example.co_leaner.model.Instructors
 import com.example.co_leaner.util.Utils
 
 class InstructorsAdapter(
+    private val onClickListener: OnClickListener,
     val context: Context,
     private val instructors: ArrayList<Instructors>
 ) :
@@ -30,6 +31,10 @@ class InstructorsAdapter(
         holder.txtDisplayName.text = instructor.title
         holder.txtJobTitle.text = instructor.job_title
         holder.txtUrl.text = context.getString(R.string.udemy_base_url, instructor.url)
+
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(instructor)
+        }
     }
 
     override fun getItemCount(): Int = instructors.size
@@ -39,5 +44,9 @@ class InstructorsAdapter(
         var txtDisplayName: TextView = itemView.findViewById(R.id.txtInstructorName)
         var txtJobTitle: TextView = itemView.findViewById(R.id.txtJobTitle)
         var txtUrl: TextView = itemView.findViewById(R.id.txtInstructorUrl)
+    }
+
+    class OnClickListener (val clickListener : (instructor: Instructors) -> Unit) {
+        fun onClick(instructor: Instructors) = clickListener(instructor)
     }
 }

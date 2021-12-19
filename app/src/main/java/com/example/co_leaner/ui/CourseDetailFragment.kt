@@ -64,7 +64,14 @@ class CourseDetailFragment : Fragment() {
                 binding.txtCourseUrl.text =
                     context?.getString(R.string.udemy_base_url, coursesResponse?.url)
                 binding.rvInstructors.adapter =
-                    InstructorsAdapter(requireContext(), coursesResponse?.visible_instructors!!)
+                    InstructorsAdapter(
+                        InstructorsAdapter.OnClickListener {
+                            Utils.openWebPage(
+                                requireContext(),
+                                it.url
+                            )
+                        }, requireContext(), coursesResponse?.visible_instructors!!
+                    )
             }
 
             override fun onFailure(call: Call<Courses>, t: Throwable) {
