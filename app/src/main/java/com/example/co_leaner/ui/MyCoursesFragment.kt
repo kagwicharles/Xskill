@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.co_leaner.R
 import com.example.co_leaner.adapter.MyCoursesAdapter
 import com.example.co_leaner.databinding.FragmentMyCoursesBinding
+import com.example.co_leaner.util.Utils
 import com.example.co_leaner.viewmodel.CoursesViewModel
 import com.example.co_leaner.viewmodel.CoursesViewModelFactory
 
@@ -31,6 +32,7 @@ class MyCoursesFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentMyCoursesBinding.inflate(inflater, container, false)
+        Utils.setToolbar(this)
 
         val rvMyCourses: RecyclerView = binding.rvMyCourses
         val adapter = MyCoursesAdapter(
