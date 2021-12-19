@@ -37,16 +37,4 @@
         app:layout_constraintStart_toEndOf="@+id/imgInstructor"
         app:layout_constraintTop_toBottomOf="@+id/txtInstructorName" />
 
-    <TextView
-        android:id="@+id/txtInstructorUrl"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
-        android:singleLine="false"
-        android:text="Url"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgInstructor"
-        app:layout_constraintTop_toBottomOf="@+id/txtJobTitle" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

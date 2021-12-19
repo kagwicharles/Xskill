@@ -30,7 +30,6 @@ class InstructorsAdapter(
         Utils.setImage(context, instructor.image_100x100, holder.imgInstructor)
         holder.txtDisplayName.text = instructor.title
         holder.txtJobTitle.text = instructor.job_title
-        holder.txtUrl.text = context.getString(R.string.udemy_base_url, instructor.url)
 
         holder.itemView.setOnClickListener {
             onClickListener.onClick(instructor)
@@ -43,7 +42,6 @@ class InstructorsAdapter(
         var imgInstructor: ImageView = itemView.findViewById(R.id.imgInstructor)
         var txtDisplayName: TextView = itemView.findViewById(R.id.txtInstructorName)
         var txtJobTitle: TextView = itemView.findViewById(R.id.txtJobTitle)
-        var txtUrl: TextView = itemView.findViewById(R.id.txtInstructorUrl)
     }
 
     class OnClickListener (val clickListener : (instructor: Instructors) -> Unit) {
