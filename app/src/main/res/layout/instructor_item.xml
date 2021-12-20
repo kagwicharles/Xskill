@@ -12,7 +12,7 @@
         android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/RoundedImageBg"/>
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CustomImageViewBg"/>
 
     <TextView
         android:id="@+id/txtInstructorName"
