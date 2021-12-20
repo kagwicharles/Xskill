@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.co_leaner.R
 import com.example.co_leaner.room.Course
@@ -45,6 +47,9 @@ class MyCoursesAdapter(
         var imgCourse: ImageView = itemView.findViewById(R.id.imgCourseImage)
         var txtCourseTitle: TextView = itemView.findViewById(R.id.txtCourseTitle)
         var txtClass: TextView = itemView.findViewById(R.id.txtClass)
+
+        var viewForeGround: ConstraintLayout = itemView.findViewById(R.id.row_foreground)
+        var viewBackground: LinearLayout = itemView.findViewById(R.id.row_background)
     }
 
     class OnClickListener(val clickListener: (course: Course) -> Unit) {
@@ -55,4 +60,7 @@ class MyCoursesAdapter(
         this.myCourses = myCourses
         notifyDataSetChanged()
     }
+
+    fun getNote(position: Int) : Course = myCourses[position]
+
 }

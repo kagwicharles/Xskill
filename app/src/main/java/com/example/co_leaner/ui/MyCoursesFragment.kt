@@ -8,12 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.co_leaner.R
 import com.example.co_leaner.adapter.MyCoursesAdapter
+import com.example.co_leaner.adapter.SwipeHelperCallback
 import com.example.co_leaner.databinding.FragmentMyCoursesBinding
 import com.example.co_leaner.util.Utils
 import com.example.co_leaner.viewmodel.CoursesViewModel
@@ -55,6 +56,14 @@ class MyCoursesFragment : Fragment() {
         viewModel.myCourses?.observe(viewLifecycleOwner, {
             adapter.submitData(it)
         })
+
+        ItemTouchHelper(
+            SwipeHelperCallback(
+                adapter,
+                context,
+                viewModel
+            )
+        ).attachToRecyclerView(rvMyCourses)
         return binding.root
     }
 

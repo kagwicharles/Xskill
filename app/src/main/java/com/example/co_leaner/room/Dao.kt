@@ -1,6 +1,7 @@
 package com.example.co_leaner.room
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
@@ -13,4 +14,7 @@ interface CourseDao {
 
     @Insert
     fun insertCourse(course: Course)
+
+    @Delete
+    fun deleteCourse(course: Course)
 }

@@ -12,6 +12,7 @@ import com.example.co_leaner.model.Courses
 import com.example.co_leaner.room.Course
 import com.example.co_leaner.room.MyCoursesRepo
 import kotlinx.coroutines.flow.Flow
+import org.jetbrains.anko.doAsync
 
 class CoursesViewModel(context: Context) : ViewModel() {
 
@@ -23,4 +24,10 @@ class CoursesViewModel(context: Context) : ViewModel() {
         .cachedIn(viewModelScope)
 
     val myCourses: LiveData<List<Course>>? = myCoursesRepository.myCourses?.asLiveData()
+
+    fun deleteCourse(course: Course) {
+        doAsync {
+            myCoursesRepository.deleteCourse(course)
+        }
+    }
 }

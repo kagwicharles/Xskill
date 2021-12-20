@@ -12,4 +12,8 @@ class MyCoursesRepo(val context: Context) {
     fun insertCourse(course: Course) {
         db.insertCourse(course)
     }
+
+    fun deleteCourse(course: Course) {
+        db.deleteCourse(course)
+    }
 }
