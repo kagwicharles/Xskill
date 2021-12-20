@@ -60,8 +60,9 @@ class MyCoursesFragment : Fragment() {
         ItemTouchHelper(
             SwipeHelperCallback(
                 adapter,
+                viewModel,
                 context,
-                viewModel
+                this
             )
         ).attachToRecyclerView(rvMyCourses)
         return binding.root

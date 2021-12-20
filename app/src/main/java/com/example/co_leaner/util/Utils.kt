@@ -42,8 +42,9 @@ class Utils {
             )
         }
 
-        fun showSnackBar(message: String, view: View?) {
-            snackbar = Snackbar.make(view!!, message, Snackbar.LENGTH_LONG)
+        fun showSnackBar(message: String?, view: View?) {
+            snackbar = Snackbar.make(view!!, message!!, Snackbar.LENGTH_LONG)
+            snackbar?.setAnchorView(R.id.bottomNavigationView)
             snackbar?.show()
         }
 

@@ -61,6 +61,6 @@ class MyCoursesAdapter(
         notifyDataSetChanged()
     }
 
-    fun getNote(position: Int) : Course = myCourses[position]
+    fun getCourse(position: Int) : Course = myCourses[position]
 
 }

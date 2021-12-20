@@ -3,17 +3,21 @@ package com.example.co_leaner.adapter
 import android.content.Context
 import android.graphics.Canvas
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.co_leaner.R
+import com.example.co_leaner.util.Utils
 import com.example.co_leaner.viewmodel.CoursesViewModel
 
 class SwipeHelperCallback(
     private val adapter: MyCoursesAdapter,
+    private val viewModel: CoursesViewModel,
     private val context: Context?,
-    private val viewModel: CoursesViewModel
+    private val fragment: Fragment
 ) : ItemTouchHelper.SimpleCallback(
     0,
-    ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT,
+    ItemTouchHelper.RIGHT,
 ) {
 
     override fun onMove(
@@ -26,8 +30,14 @@ class SwipeHelperCallback(
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         val position = viewHolder.adapterPosition
-        viewModel.deleteCourse(adapter.getNote(position))
+        val course = adapter.getCourse(position)
+        val courseTitle = course.courseTitle
+        viewModel.deleteCourse(course)
         adapter.notifyItemRemoved(position)
+        Utils.showSnackBar(
+            context?.getString(R.string.delete_course, courseTitle),
+            fragment.activity?.findViewById(R.id.mainLinearLayout)
+        )
     }
 
     override fun onChildDrawOver(
