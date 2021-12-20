@@ -18,6 +18,9 @@ import com.google.android.material.snackbar.Snackbar
 class Utils {
 
     companion object {
+
+        var snackbar: Snackbar? = null
+
         fun setToolbar(
             fragment: Fragment,
             drawableResource: Int? = R.drawable.ic_baseline_school_40,
@@ -40,7 +43,8 @@ class Utils {
         }
 
         fun showSnackBar(message: String, view: View?) {
-            Snackbar.make(view!!, message, Snackbar.LENGTH_LONG).show()
+            snackbar = Snackbar.make(view!!, message, Snackbar.LENGTH_LONG)
+            snackbar?.show()
         }
 
         fun setImage(context: Context, url: String?, imageView: ImageView) {

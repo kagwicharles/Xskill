@@ -105,4 +105,9 @@ class CourseDetailFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Utils.snackbar?.dismiss()
+    }
 }
