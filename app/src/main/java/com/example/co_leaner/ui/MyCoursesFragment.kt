@@ -57,6 +57,9 @@ class MyCoursesFragment : Fragment() {
             adapter.submitData(it)
         })
 
+        viewModel.getCourseCount().observe(viewLifecycleOwner, {
+            binding.txtCourseCount.text = it.toString()
+        })
         ItemTouchHelper(
             SwipeHelperCallback(
                 adapter,

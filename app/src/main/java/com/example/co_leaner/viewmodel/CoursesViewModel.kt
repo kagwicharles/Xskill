@@ -30,4 +30,6 @@ class CoursesViewModel(context: Context) : ViewModel() {
             myCoursesRepository.deleteCourse(course)
         }
     }
+
+    fun getCourseCount() : LiveData<Int> = myCoursesRepository.getCourseCount()
 }

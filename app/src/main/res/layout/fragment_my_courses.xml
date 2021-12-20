@@ -2,10 +2,10 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_courses_root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MyCoursesFragment"
-    android:id="@+id/my_courses_root_view">
+    tools:context=".ui.MyCoursesFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -17,21 +17,55 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="In Progress"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                style="@style/CustomTextViewStyle" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txt_course_count"
+                    style="@style/CustomTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/txt_course_count"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/txt_course_count"
+                    android:gravity="center"
+                    android:text="Courses" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/CustomTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/img_progress"
+                    android:layout_alignBottom="@+id/img_progress"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/img_progress"
+                    android:text="In Progress" />
+
+                <ImageView
+                    android:id="@+id/img_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_course_count"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/ic_baseline_show_chart_40" />
+
+            </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvMyCourses"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:overScrollMode="never"/>
+                android:layout_marginTop="15dp"
+                android:overScrollMode="never" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
