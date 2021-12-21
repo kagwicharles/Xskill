@@ -43,20 +43,12 @@
                     style="@style/CustomTextViewStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_course_count"
                     android:layout_alignTop="@+id/img_progress"
                     android:layout_alignBottom="@+id/img_progress"
                     android:layout_marginStart="10dp"
-                    android:layout_toEndOf="@+id/img_progress"
-                    android:text="In Progress" />
-
-                <ImageView
-                    android:id="@+id/img_progress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_course_count"
-                    android:layout_marginStart="10dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/ic_baseline_show_chart_40" />
+                    android:text="In Progress" />
 
             </RelativeLayout>
 
