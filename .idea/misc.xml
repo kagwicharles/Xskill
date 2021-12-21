@@ -5,7 +5,9 @@
       <map>
         <entry key="app/src/main/res/drawable/bottom_sheetbg.xml" value="0.1046875" />
         <entry key="app/src/main/res/drawable/custom_btn.xml" value="0.20885416666666667" />
+        <entry key="app/src/main/res/drawable/ic_baseline_school_40.xml" value="0.21302083333333333" />
         <entry key="app/src/main/res/drawable/ic_baseline_school_50.xml" value="0.20885416666666667" />
+        <entry key="app/src/main/res/drawable/ic_baseline_search_40.xml" value="0.21302083333333333" />
         <entry key="app/src/main/res/drawable/img_bg.xml" value="0.1046875" />
         <entry key="app/src/main/res/drawable/price_statusbg.xml" value="0.2078125" />
         <entry key="app/src/main/res/font/other_fonts.xml" value="0.22291666666666668" />
@@ -16,7 +18,7 @@
         <entry key="app/src/main/res/layout/fragment_courses.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/fragment_groups.xml" value="0.13768115942028986" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2842809364548495" />
-        <entry key="app/src/main/res/layout/fragment_my_courses.xml" value="0.13768115942028986" />
+        <entry key="app/src/main/res/layout/fragment_my_courses.xml" value="0.4537037037037037" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.13768115942028986" />
         <entry key="app/src/main/res/layout/fragment_web_view.xml" value="0.11684782608695653" />
         <entry key="app/src/main/res/layout/group_item.xml" value="0.67" />
@@ -25,6 +27,7 @@
         <entry key="app/src/main/res/layout/toolbar_layout.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/menu/course_details_menu.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/menu/courses_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

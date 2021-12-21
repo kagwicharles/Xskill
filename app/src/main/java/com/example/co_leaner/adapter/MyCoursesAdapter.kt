@@ -4,9 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.co_leaner.R
@@ -17,10 +15,11 @@ class MyCoursesAdapter(
     private val onClickListener: OnClickListener,
     val context: Context?
 ) :
-    RecyclerView.Adapter<MyCoursesAdapter.MyCoursesViewHolder>() {
+    RecyclerView.Adapter<MyCoursesAdapter.MyCoursesViewHolder>(), Filterable {
 
     private val layoutInflater = LayoutInflater.from(context)
     private var myCourses = listOf<Course>()
+    private var myCoursesFiltered = listOf<Course>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -61,6 +60,39 @@ class MyCoursesAdapter(
         notifyDataSetChanged()
     }
 
-    fun getCourse(position: Int) : Course = myCourses[position]
+    fun getCourse(position: Int): Course = myCourses[position]
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charString = constraint?.toString() ?: ""
+                if (charString.isEmpty()) myCoursesFiltered = myCourses else {
+                    val filteredList = ArrayList<Course>()
+                    myCourses
+                        .filter {
+                            (it.courseTitle?.contains(constraint!!))?.or(
+                                (it.courseUrl?.contains(
+                                    constraint!!
+                                )!!)
+                            )!!
+
+                        }
+                        .forEach { filteredList.add(it) }
+                    myCoursesFiltered = filteredList
+
+                }
+                return FilterResults().apply { values = myCoursesFiltered }
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+
+                myCoursesFiltered = if (results?.values == null)
+                    ArrayList()
+                else
+                    results.values as ArrayList<Course>
+                notifyDataSetChanged()
+            }
+        }
+    }
 
 }

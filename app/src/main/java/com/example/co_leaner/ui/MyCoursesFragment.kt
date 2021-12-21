@@ -3,10 +3,9 @@ package com.example.co_leaner.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -26,6 +25,7 @@ class MyCoursesFragment : Fragment() {
 
     private var _binding: FragmentMyCoursesBinding? = null
     private val binding get() = _binding!!
+    private var coursesAdapter: MyCoursesAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,9 +34,10 @@ class MyCoursesFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentMyCoursesBinding.inflate(inflater, container, false)
         Utils.setToolbar(this)
+        setHasOptionsMenu(true)
 
         val rvMyCourses: RecyclerView = binding.rvMyCourses
-        val adapter = MyCoursesAdapter(
+        coursesAdapter = MyCoursesAdapter(
             MyCoursesAdapter.OnClickListener { openWebPage(it.courseUrl!!) },
             context
         )
@@ -44,7 +45,7 @@ class MyCoursesFragment : Fragment() {
         rvMyCourses.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             setHasFixedSize(true)
-            this.adapter = adapter
+            this.adapter = coursesAdapter
             addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
             isNestedScrollingEnabled = false
         }
@@ -54,7 +55,7 @@ class MyCoursesFragment : Fragment() {
             CoursesViewModelFactory(context)
         )[CoursesViewModel::class.java]
         viewModel.myCourses?.observe(viewLifecycleOwner, {
-            adapter.submitData(it)
+            coursesAdapter?.submitData(it)
         })
 
         viewModel.getCourseCount().observe(viewLifecycleOwner, {
@@ -62,7 +63,7 @@ class MyCoursesFragment : Fragment() {
         })
         ItemTouchHelper(
             SwipeHelperCallback(
-                adapter,
+                coursesAdapter!!,
                 viewModel,
                 context,
                 this
@@ -77,6 +78,26 @@ class MyCoursesFragment : Fragment() {
                 Intent.ACTION_VIEW,
                 Uri.parse(activity?.getString(R.string.udemy_base_url, uri))
             )
+        )
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.courses_menu, menu)
+        val search = menu.findItem(R.id.app_bar_search)
+        val searchView = search.actionView as SearchView
+        searchView.queryHint = "Search"
+        searchView.setOnQueryTextListener(
+            object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    coursesAdapter?.filter?.filter(newText)
+                    return true
+                }
+            }
         )
     }
 }
