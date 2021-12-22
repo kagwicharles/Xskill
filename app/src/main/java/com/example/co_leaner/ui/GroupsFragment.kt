@@ -1,10 +1,8 @@
 package com.example.co_leaner.ui
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.co_leaner.R
@@ -21,18 +19,22 @@ class GroupsFragment : Fragment() {
 
     private lateinit var viewModel: GroupsViewModel
 
+    private var bottomSheet: BottomSheet? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentGroupsBinding.inflate(inflater, container, false)
+        bottomSheet = BottomSheet()
 
         Utils.setToolbar(
             fragment = this
         ).setNavigationOnClickListener {
             Utils.openFragment(fragment = this, destination = R.id.homeFragment)
         }
+        setHasOptionsMenu(true)
 
         val adapter = GroupsAdapter(requireContext())
         val recyclerView = binding.rvMyGroups
@@ -50,4 +52,15 @@ class GroupsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.groups_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.add_group) {
+            bottomSheet?.show(requireActivity().supportFragmentManager, "")
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

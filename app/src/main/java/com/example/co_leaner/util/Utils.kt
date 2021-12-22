@@ -53,6 +53,7 @@ class Utils {
             Glide
                 .with(context)
                 .load(url)
+                .fallback(R.drawable.ic_baseline_image_24)
                 .into(imageView)
         }
 
