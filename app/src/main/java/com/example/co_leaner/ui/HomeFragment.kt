@@ -22,7 +22,9 @@ class HomeFragment : Fragment() {
 
         Utils.setToolbar(
             fragment = this
-        )
+        ).setNavigationOnClickListener {
+            Utils.openFragment(fragment = this, destination = R.id.homeFragment)
+        }
 
         val adapter = CategoriesAdapter(CategoriesAdapter.OnClickListener {
             Utils.openFragment(this, setBundle(it.categoryName), R.id.coursesFragment)

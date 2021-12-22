@@ -9,11 +9,13 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.bumptech.glide.Glide
 import com.example.co_leaner.R
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_main.*
 
 class Utils {
 
@@ -26,8 +28,8 @@ class Utils {
             drawableResource: Int? = R.drawable.ic_baseline_school_40,
             title: String? = "Xskill",
             color: String = "#0277bd"
-        ) {
-            val toolbar = (fragment.activity as AppCompatActivity).supportActionBar
+        ): Toolbar {
+            val toolbar = (fragment.activity as AppCompatActivity).toolbar
             toolbar?.title = title
             val drawable =
                 fragment.context?.let {
@@ -37,9 +39,8 @@ class Utils {
                     )
                 }
             drawable?.setTint(Color.parseColor(color))
-            toolbar?.setHomeAsUpIndicator(
-                drawable
-            )
+            toolbar?.navigationIcon = drawable
+            return toolbar!!
         }
 
         fun showSnackBar(message: String?, view: View?) {
@@ -64,7 +65,7 @@ class Utils {
             )
         }
 
-        fun openFragment(fragment: Fragment, bundle: Bundle, destination: Int) {
+        fun openFragment(fragment: Fragment, bundle: Bundle? = null, destination: Int) {
             val navHostFragment =
                 fragment.activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
             val navController = navHostFragment.navController

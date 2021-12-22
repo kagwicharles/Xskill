@@ -33,7 +33,9 @@ class MyCoursesFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentMyCoursesBinding.inflate(inflater, container, false)
-        Utils.setToolbar(this)
+        Utils.setToolbar(this).setNavigationOnClickListener {
+            Utils.openFragment(fragment = this, destination = R.id.homeFragment)
+        }
         setHasOptionsMenu(true)
 
         val rvMyCourses: RecyclerView = binding.rvMyCourses

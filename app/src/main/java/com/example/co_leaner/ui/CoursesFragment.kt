@@ -38,6 +38,9 @@ class CoursesFragment : Fragment() {
 
         val courseCategory = arguments?.getString("COURSE_CATEGORY")
         Utils.setToolbar(this, R.drawable.ic_baseline_arrow_back_ios_40, courseCategory)
+            .setNavigationOnClickListener {
+                Utils.openFragment(fragment = this, destination = R.id.homeFragment)
+            }
 
         val adapter = CoursesAdapter(CoursesAdapter.OnClickListener {
             Utils.openFragment(

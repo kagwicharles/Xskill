@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.view.View.GONE
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.co_leaner.R
 import com.example.co_leaner.adapter.InstructorsAdapter
@@ -39,6 +40,9 @@ class CourseDetailFragment : Fragment() {
         setHasOptionsMenu(true)
 
         Utils.setToolbar(this, R.drawable.ic_baseline_cancel_40, "Course Details")
+            .setNavigationOnClickListener {
+                NavHostFragment.findNavController(this).navigateUp()
+            }
 
         activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)?.visibility =
             GONE

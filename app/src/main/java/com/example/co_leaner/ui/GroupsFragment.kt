@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.co_leaner.R
 import com.example.co_leaner.adapter.GroupsAdapter
 import com.example.co_leaner.databinding.FragmentGroupsBinding
 import com.example.co_leaner.model.Groups
@@ -32,7 +33,9 @@ class GroupsFragment : Fragment() {
 
         Utils.setToolbar(
             fragment = this
-        )
+        ).setNavigationOnClickListener {
+            Utils.openFragment(fragment = this, destination = R.id.homeFragment)
+        }
 
         val adapter = GroupsAdapter(requireContext())
         val recyclerView = binding.rvMyGroups
