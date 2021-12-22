@@ -8,13 +8,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.co_leaner.R
-import com.example.co_leaner.model.Groups
+import com.example.co_leaner.room.Group
 import com.example.co_leaner.util.Utils
 
 class GroupsAdapter(val context: Context) : RecyclerView.Adapter<GroupsAdapter.GroupsViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
-    private var list: List<Groups> = listOf()
+    private var list: List<Group> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupsViewHolder {
         val itemView = layoutInflater.inflate(R.layout.group_item, parent, false)
@@ -23,9 +23,9 @@ class GroupsAdapter(val context: Context) : RecyclerView.Adapter<GroupsAdapter.G
 
     override fun onBindViewHolder(holder: GroupsViewHolder, position: Int) {
         val group = list[position]
-        Utils.setImage(context, group.groupImage, holder.groupImage)
-        holder.groupName.text = group.groupName
-        holder.groupParticipants.text = group.groupParticipants.toString()
+        Utils.setImage(context, group.image, holder.groupImage)
+        holder.groupName.text = group.name
+        holder.groupParticipants.text = group.participants.toString()
     }
 
     override fun getItemCount(): Int = list.size
@@ -36,7 +36,7 @@ class GroupsAdapter(val context: Context) : RecyclerView.Adapter<GroupsAdapter.G
         val groupParticipants: TextView = itemView.findViewById(R.id.txtgroupparticipants)
     }
 
-    fun submitData(list: List<Groups>) {
+    fun submitData(list: List<Group>) {
         this.list = list
         notifyDataSetChanged()
     }

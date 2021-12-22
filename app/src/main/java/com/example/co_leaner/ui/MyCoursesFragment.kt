@@ -17,7 +17,7 @@ import com.example.co_leaner.adapter.SwipeHelperCallback
 import com.example.co_leaner.databinding.FragmentMyCoursesBinding
 import com.example.co_leaner.util.Utils
 import com.example.co_leaner.viewmodel.CoursesViewModel
-import com.example.co_leaner.viewmodel.CoursesViewModelFactory
+import com.example.co_leaner.viewmodel.MyViewModelFactory
 
 class MyCoursesFragment : Fragment() {
 
@@ -54,7 +54,7 @@ class MyCoursesFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(
             this,
-            CoursesViewModelFactory(context)
+            MyViewModelFactory(context)
         )[CoursesViewModel::class.java]
         viewModel.myCourses?.observe(viewLifecycleOwner, {
             coursesAdapter?.submitData(it)

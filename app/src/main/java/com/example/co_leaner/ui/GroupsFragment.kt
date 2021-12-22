@@ -5,24 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.co_leaner.R
 import com.example.co_leaner.adapter.GroupsAdapter
 import com.example.co_leaner.databinding.FragmentGroupsBinding
-import com.example.co_leaner.model.Groups
 import com.example.co_leaner.util.Utils
+import com.example.co_leaner.viewmodel.GroupsViewModel
+import com.example.co_leaner.viewmodel.MyViewModelFactory
 
 class GroupsFragment : Fragment() {
 
     private var _binding: FragmentGroupsBinding? = null
     private val binding get() = _binding!!
-    private var list: List<Groups> = listOf(
-        Groups(
-            "https://img-c.udemycdn.com/course/240x135/3060786_438f_2.jpg",
-            "Data Science",
-            9
-        )
-    )
+
+    private lateinit var viewModel: GroupsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +39,14 @@ class GroupsFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(context, 2)
         recyclerView.adapter = adapter
 
-        adapter.submitData(list)
+        viewModel = ViewModelProviders.of(
+            this,
+            MyViewModelFactory(context)
+        )[GroupsViewModel::class.java]
+        viewModel.myCourses?.observe(viewLifecycleOwner, {
+            adapter.submitData(it)
+        })
+
         return binding.root
     }
 

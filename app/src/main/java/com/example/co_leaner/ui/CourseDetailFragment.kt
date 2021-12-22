@@ -12,7 +12,7 @@ import com.example.co_leaner.databinding.FragmentCourseDetailBinding
 import com.example.co_leaner.model.Courses
 import com.example.co_leaner.network.CoursesApiService
 import com.example.co_leaner.room.Course
-import com.example.co_leaner.room.MyCoursesRepo
+import com.example.co_leaner.room.Repo
 import com.example.co_leaner.util.Utils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.jetbrains.anko.doAsync
@@ -92,7 +92,7 @@ class CourseDetailFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val repo = MyCoursesRepo(requireContext())
+        val repo = Repo(requireContext())
         if (item.itemId == R.id.takeCourse) {
             doAsync {
                 repo.insertCourse(

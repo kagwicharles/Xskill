@@ -10,26 +10,26 @@ import androidx.paging.cachedIn
 import com.example.co_leaner.data.CoursesRepository
 import com.example.co_leaner.model.Courses
 import com.example.co_leaner.room.Course
-import com.example.co_leaner.room.MyCoursesRepo
+import com.example.co_leaner.room.Repo
 import kotlinx.coroutines.flow.Flow
 import org.jetbrains.anko.doAsync
 
 class CoursesViewModel(context: Context) : ViewModel() {
 
     private val coursesRepository: CoursesRepository = CoursesRepository()
-    private val myCoursesRepository: MyCoursesRepo = MyCoursesRepo(context)
+    private val repo: Repo = Repo(context)
 
     fun getCourses(courseCategory: String?): Flow<PagingData<Courses>> = coursesRepository
         .getSearchResultStream(courseCategory)
         .cachedIn(viewModelScope)
 
-    val myCourses: LiveData<List<Course>>? = myCoursesRepository.myCourses?.asLiveData()
+    val myCourses: LiveData<List<Course>>? = repo.myCourses?.asLiveData()
 
     fun deleteCourse(course: Course) {
         doAsync {
-            myCoursesRepository.deleteCourse(course)
+            repo.deleteCourse(course)
         }
     }
 
-    fun getCourseCount() : LiveData<Int> = myCoursesRepository.getCourseCount()
+    fun getCourseCount() : LiveData<Int> = repo.getCourseCount()
 }

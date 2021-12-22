@@ -16,6 +16,7 @@ data class Course(
 @Entity(tableName = "group")
 data class Group(
     @PrimaryKey val groupId: String,
-    @ColumnInfo(name = "name") val groupName: String?,
+    @ColumnInfo(name = "name") val name: String?,
     @ColumnInfo(name = "participants") val participants: Int?,
+    @ColumnInfo(name = "image") val image: String?
 )

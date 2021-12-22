@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import kotlinx.coroutines.flow.Flow
 
-class MyCoursesRepo(val context: Context) {
+class Repo(val context: Context) {
 
     private val db: CourseDao = MyDatabase.getDb(context).courseDao()
 

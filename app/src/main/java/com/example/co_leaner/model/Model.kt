@@ -29,9 +29,3 @@ data class CourseCategories(
     var categoryName: String,
     var categoryImage: Int,
 )
-
-data class Groups(
-    val groupImage: String?,
-    val groupName: String,
-    val groupParticipants: Int
-)

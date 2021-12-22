@@ -16,7 +16,7 @@ import com.example.co_leaner.R
 import com.example.co_leaner.adapter.CoursesAdapter
 import com.example.co_leaner.util.Utils
 import com.example.co_leaner.viewmodel.CoursesViewModel
-import com.example.co_leaner.viewmodel.CoursesViewModelFactory
+import com.example.co_leaner.viewmodel.MyViewModelFactory
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -55,7 +55,7 @@ class CoursesFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(
             this,
-            CoursesViewModelFactory(context)
+            MyViewModelFactory(context)
         )[CoursesViewModel::class.java]
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getCourses(courseCategory).collectLatest {
