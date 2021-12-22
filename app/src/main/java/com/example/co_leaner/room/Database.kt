@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@androidx.room.Database(entities = [Course::class], version = 1)
+@androidx.room.Database(entities = [Course::class, Group::class], version = 1)
 abstract class MyDatabase : RoomDatabase() {
 
     abstract fun courseDao(): CourseDao

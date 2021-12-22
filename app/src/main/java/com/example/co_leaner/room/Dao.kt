@@ -21,4 +21,13 @@ interface CourseDao {
 
     @Query("SELECT COUNT(DISTINCT courseId) FROM course")
     fun getCoursesCount() : LiveData<Int>
+
+    @Query("SELECT* FROM `group`")
+    fun getAllGroups() : Flow<List<Group>>?
+
+    @Insert
+    fun insertGroup(group: Group)
+
+    @Delete
+    fun deleteGroup(group: Group)
 }

@@ -12,3 +12,10 @@ data class Course(
     @ColumnInfo(name = "courseImage") val courseImage: String?,
     @ColumnInfo(name = "courseUrl") val courseUrl: String?
 )
+
+@Entity(tableName = "group")
+data class Group(
+    @PrimaryKey val groupId: String,
+    @ColumnInfo(name = "name") val groupName: String?,
+    @ColumnInfo(name = "participants") val participants: Int?,
+)
