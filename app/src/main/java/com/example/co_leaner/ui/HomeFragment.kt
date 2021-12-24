@@ -5,8 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.co_leaner.R
 import com.example.co_leaner.adapter.CategoriesAdapter
 import com.example.co_leaner.data.CategoriesData.Companion.getCourseCategories
@@ -31,7 +32,7 @@ class HomeFragment : Fragment() {
         }, context, getCourseCategories())
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.rvCourseCategories)
-        val layoutManager = GridLayoutManager(context, 2)
+        val layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
         return view

@@ -17,9 +17,9 @@
         <entry key="app/src/main/res/layout/course_item.xml" value="0.38440111420612816" />
         <entry key="app/src/main/res/layout/fragment_course_detail.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_courses.xml" value="0.14447463768115942" />
-        <entry key="app/src/main/res/layout/fragment_groups.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_groups.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2842809364548495" />
-        <entry key="app/src/main/res/layout/fragment_my_courses.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_my_courses.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.13768115942028986" />
         <entry key="app/src/main/res/layout/fragment_web_view.xml" value="0.11684782608695653" />
         <entry key="app/src/main/res/layout/group_item.xml" value="0.3412256267409471" />
