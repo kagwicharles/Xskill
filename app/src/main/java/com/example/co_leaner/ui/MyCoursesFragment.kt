@@ -48,7 +48,6 @@ class MyCoursesFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             setHasFixedSize(true)
             this.adapter = coursesAdapter
-            addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
             isNestedScrollingEnabled = false
         }
 

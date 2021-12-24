@@ -16,8 +16,6 @@ class BottomSheet : BottomSheetDialogFragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.bottom_sheet, container, false)
-
-
         return view
     }
 }

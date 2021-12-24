@@ -37,18 +37,19 @@ class GroupsFragment : Fragment() {
         }
         setHasOptionsMenu(true)
 
-        val adapter = GroupsAdapter(requireContext())
-        val recyclerView = binding.rvMyGroups
-        recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
-        recyclerView.adapter = adapter
-        recyclerView.isNestedScrollingEnabled = false
+        val groupsAdapter = GroupsAdapter(requireContext())
+        binding.rvMyGroups.apply {
+            layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+            adapter = groupsAdapter
+            isNestedScrollingEnabled = false
+        }
 
         viewModel = ViewModelProviders.of(
             this,
             MyViewModelFactory(context)
         )[GroupsViewModel::class.java]
         viewModel.myCourses?.observe(viewLifecycleOwner, {
-            adapter.submitData(it)
+            groupsAdapter.submitData(it)
         })
 
         return binding.root

@@ -6,19 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.co_leaner.R
 import com.example.co_leaner.adapter.CategoriesAdapter
 import com.example.co_leaner.data.CategoriesData.Companion.getCourseCategories
+import com.example.co_leaner.databinding.FragmentHomeBinding
 import com.example.co_leaner.util.Utils
 
 class HomeFragment : Fragment() {
 
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         Utils.setToolbar(
             fragment = this
@@ -26,15 +29,15 @@ class HomeFragment : Fragment() {
             Utils.openFragment(fragment = this, destination = R.id.homeFragment)
         }
 
-        val adapter = CategoriesAdapter(CategoriesAdapter.OnClickListener {
+        val categoriesAdapter = CategoriesAdapter(CategoriesAdapter.OnClickListener {
             Utils.openFragment(this, setBundle(it.categoryName), R.id.coursesFragment)
         }, context, getCourseCategories())
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rvCourseCategories)
-        val layoutManager = GridLayoutManager(context, 2)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = adapter
-        return view
+        binding.rvCourseCategories.apply {
+            layoutManager = GridLayoutManager(context, 2)
+            adapter = categoriesAdapter
+        }
+        return binding.root
     }
 
     private fun setBundle(courseCategory: String): Bundle {
