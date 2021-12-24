@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_courses_root_view"
     android:layout_width="match_parent"
@@ -44,8 +43,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txt_course_count"
-                    android:layout_alignTop="@+id/img_progress"
-                    android:layout_alignBottom="@+id/img_progress"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="15dp"
                     android:text="In Progress" />

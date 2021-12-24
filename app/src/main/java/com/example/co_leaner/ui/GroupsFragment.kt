@@ -4,7 +4,8 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.co_leaner.R
 import com.example.co_leaner.adapter.GroupsAdapter
 import com.example.co_leaner.databinding.FragmentGroupsBinding
@@ -38,8 +39,9 @@ class GroupsFragment : Fragment() {
 
         val adapter = GroupsAdapter(requireContext())
         val recyclerView = binding.rvMyGroups
-        recyclerView.layoutManager = GridLayoutManager(context, 2)
+        recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         recyclerView.adapter = adapter
+        recyclerView.isNestedScrollingEnabled = false
 
         viewModel = ViewModelProviders.of(
             this,
