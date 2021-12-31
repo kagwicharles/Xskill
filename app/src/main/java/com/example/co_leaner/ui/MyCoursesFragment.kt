@@ -25,7 +25,11 @@ class MyCoursesFragment : Fragment() {
 
     private var _binding: FragmentMyCoursesBinding? = null
     private val binding get() = _binding!!
+
     private var coursesAdapter: MyCoursesAdapter? = null
+    private var rvMyCourses: RecyclerView? = null
+    private var linearLayoutManager: LinearLayoutManager? = null
+    private var scrollPosition: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,14 +42,18 @@ class MyCoursesFragment : Fragment() {
         }
         setHasOptionsMenu(true)
 
-        val rvMyCourses: RecyclerView = binding.rvMyCourses
+        rvMyCourses = binding.rvMyCourses
         coursesAdapter = MyCoursesAdapter(
             MyCoursesAdapter.OnClickListener { openWebPage(it.courseUrl!!) },
             context
         )
+        coursesAdapter?.stateRestorationPolicy =
+            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
 
-        rvMyCourses.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        rvMyCourses?.apply {
+            layoutManager = linearLayoutManager
             setHasFixedSize(true)
             this.adapter = coursesAdapter
             isNestedScrollingEnabled = false
@@ -100,5 +108,15 @@ class MyCoursesFragment : Fragment() {
                 }
             }
         )
+    }
+
+    override fun onPause() {
+        super.onPause()
+        scrollPosition = linearLayoutManager?.findLastVisibleItemPosition()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        rvMyCourses?.scrollToPosition(scrollPosition!!)
     }
 }
