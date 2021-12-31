@@ -32,12 +32,13 @@
             android:id="@+id/txtPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Free"
             android:layout_gravity="end"
-            android:textColor="#fff"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/price_statusbg"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"/>
+            android:elevation="8dp"
+            android:text="Free"
+            android:textColor="#fff" />
 
     </FrameLayout>
     <TextView

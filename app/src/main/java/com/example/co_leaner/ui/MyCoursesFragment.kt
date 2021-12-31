@@ -109,14 +109,4 @@ class MyCoursesFragment : Fragment() {
             }
         )
     }
-
-    override fun onPause() {
-        super.onPause()
-        scrollPosition = linearLayoutManager?.findLastVisibleItemPosition()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        rvMyCourses?.scrollToPosition(scrollPosition!!)
-    }
 }

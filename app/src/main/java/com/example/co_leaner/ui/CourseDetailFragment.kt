@@ -66,8 +66,6 @@ class CourseDetailFragment : Fragment() {
                 Utils.setImage(requireContext(), courseImage, binding.imgCourseImage)
                 binding.txtPrice.text = coursesResponse?.price
                 binding.txtClass.text = courseClass
-                binding.txtCourseUrl.text =
-                    context?.getString(R.string.udemy_base_url, coursesResponse?.url)
                 binding.rvInstructors.adapter =
                     InstructorsAdapter(
                         InstructorsAdapter.OnClickListener {
@@ -107,6 +105,11 @@ class CourseDetailFragment : Fragment() {
                 )
             }
             Utils.showSnackBar("Course Added", view?.findViewById(R.id.course_detail_root_view))
+        } else if (item.itemId == R.id.view_course) {
+            Utils.openWebPage(
+                requireContext(),
+                courseUrl!!
+            )
         }
         return super.onOptionsItemSelected(item)
     }

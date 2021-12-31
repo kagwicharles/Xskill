@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.co_leaner.R
 import com.example.co_leaner.adapter.CoursesAdapter
+import com.example.co_leaner.databinding.FragmentCoursesBinding
 import com.example.co_leaner.util.Utils
 import com.example.co_leaner.viewmodel.CoursesViewModel
 import com.example.co_leaner.viewmodel.MyViewModelFactory
@@ -23,17 +24,24 @@ import kotlinx.coroutines.launch
 
 class CoursesFragment : Fragment() {
 
+    private var _binding: FragmentCoursesBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var viewModel: CoursesViewModel
+
+    private var gridLayoutManager: GridLayoutManager? = null
+    private var scrollPosition: Int? = -1
+    private var rvCourses: RecyclerView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_courses, container, false)
+        _binding = FragmentCoursesBinding.inflate(inflater, container, false)
 
-        val rvCourses: RecyclerView = view.findViewById(R.id.rvCourses)
-        progressIndicator = view?.findViewById(R.id.progressIndicator)
+        rvCourses = binding.rvCourses
+        progressIndicator = binding.progressIndicator
         progressIndicator?.visibility = GONE
 
         val courseCategory = arguments?.getString("COURSE_CATEGORY")
@@ -42,7 +50,7 @@ class CoursesFragment : Fragment() {
                 Utils.openFragment(fragment = this, destination = R.id.homeFragment)
             }
 
-        val adapter = CoursesAdapter(CoursesAdapter.OnClickListener {
+        val coursesAdapter = CoursesAdapter(CoursesAdapter.OnClickListener {
             Utils.openFragment(
                 this,
                 setBundle(it!!.id),
@@ -50,8 +58,12 @@ class CoursesFragment : Fragment() {
             )
         }, context)
 
-        rvCourses.layoutManager = GridLayoutManager(context, 2)
-        rvCourses.adapter = adapter
+        gridLayoutManager = GridLayoutManager(context, 2)
+
+        rvCourses?.apply {
+            layoutManager = gridLayoutManager
+            adapter = coursesAdapter
+        }
 
         viewModel = ViewModelProviders.of(
             this,
@@ -59,13 +71,13 @@ class CoursesFragment : Fragment() {
         )[CoursesViewModel::class.java]
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getCourses(courseCategory).collectLatest {
-                adapter.submitData(it)
-                rvCourses.adapter = adapter
+                coursesAdapter.submitData(it)
+                rvCourses?.adapter = coursesAdapter
             }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            adapter.loadStateFlow.collectLatest { loadStates ->
+            coursesAdapter.loadStateFlow.collectLatest { loadStates ->
                 when {
                     loadStates.source.append is LoadState.Loading -> showProgress(true)
                     loadStates.source.append is LoadState.NotLoading -> showProgress(false)
@@ -76,7 +88,7 @@ class CoursesFragment : Fragment() {
                 }
             }
         }
-        return view
+        return binding.root
     }
 
     companion object {
@@ -91,5 +103,16 @@ class CoursesFragment : Fragment() {
         val bundle = Bundle()
         bundle.putInt("COURSE_ID", courseId)
         return bundle
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (scrollPosition != -1)
+            scrollPosition = gridLayoutManager?.findLastVisibleItemPosition()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        rvCourses?.scrollToPosition(scrollPosition!!)
     }
 }

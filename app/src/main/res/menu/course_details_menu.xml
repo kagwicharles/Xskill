@@ -4,4 +4,7 @@
     <item
         android:id="@+id/takeCourse"
         android:title="Take Course" />
+    <item
+        android:id="@+id/view_course"
+        android:title="View Course" />
 </menu>
