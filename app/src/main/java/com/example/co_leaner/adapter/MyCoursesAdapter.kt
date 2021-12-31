@@ -8,7 +8,7 @@ import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.co_leaner.R
-import com.example.co_leaner.room.Course
+import com.example.co_leaner.data.local.Course
 import com.example.co_leaner.util.Utils
 
 class MyCoursesAdapter(
@@ -18,7 +18,7 @@ class MyCoursesAdapter(
     RecyclerView.Adapter<MyCoursesAdapter.MyCoursesViewHolder>(), Filterable {
 
     private val layoutInflater = LayoutInflater.from(context)
-    private var myCourses = listOf<Course>()
+    private var myCourses: MutableList<Course> = mutableListOf()
     private var myCoursesFiltered = listOf<Course>()
 
     override fun onCreateViewHolder(
@@ -55,9 +55,14 @@ class MyCoursesAdapter(
         fun onClick(course: Course) = clickListener(course)
     }
 
-    fun submitData(myCourses: List<Course>) {
+    fun submitData(myCourses: MutableList<Course>) {
         this.myCourses = myCourses
         notifyDataSetChanged()
+    }
+
+    fun removeCourse(position: Int) {
+        myCourses.removeAt(position)
+        notifyItemRemoved(position)
     }
 
     fun getCourse(position: Int): Course = myCourses[position]

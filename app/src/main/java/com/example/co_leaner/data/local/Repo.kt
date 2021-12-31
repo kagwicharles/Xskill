@@ -1,4 +1,4 @@
-package com.example.co_leaner.room
+package com.example.co_leaner.data.local
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -15,8 +15,8 @@ class Repo(val context: Context) {
         db.insertCourse(course)
     }
 
-    fun deleteCourse(course: Course) {
-        db.deleteCourse(course)
+    suspend fun deleteCourse(course: Course): Int {
+        return db.deleteCourse(course)
     }
 
     fun getCourseCount(): LiveData<Int> = db.getCoursesCount()

@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.example.co_leaner.room.Group
-import com.example.co_leaner.room.Repo
+import com.example.co_leaner.data.local.Group
+import com.example.co_leaner.data.local.Repo
 
 class GroupsViewModel(context: Context) : ViewModel() {
 

@@ -1,10 +1,9 @@
-package com.example.co_leaner.data
+package com.example.co_leaner.data.network
 
 import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.co_leaner.model.Courses
-import com.example.co_leaner.network.CoursesApiService
 import retrofit2.HttpException
 import java.io.IOException
 import java.lang.NullPointerException

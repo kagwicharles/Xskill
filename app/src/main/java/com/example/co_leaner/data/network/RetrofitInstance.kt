@@ -1,4 +1,4 @@
-package com.example.co_leaner.network
+package com.example.co_leaner.data.network
 
 import com.example.co_leaner.model.Courses
 import com.example.co_leaner.model.CoursesParent

@@ -7,13 +7,13 @@ import android.view.*
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.co_leaner.R
 import com.example.co_leaner.adapter.MyCoursesAdapter
 import com.example.co_leaner.adapter.SwipeHelperCallback
+import com.example.co_leaner.data.local.Course
 import com.example.co_leaner.databinding.FragmentMyCoursesBinding
 import com.example.co_leaner.util.Utils
 import com.example.co_leaner.viewmodel.CoursesViewModel
@@ -56,7 +56,7 @@ class MyCoursesFragment : Fragment() {
             MyViewModelFactory(context)
         )[CoursesViewModel::class.java]
         viewModel.myCourses?.observe(viewLifecycleOwner, {
-            coursesAdapter?.submitData(it)
+            coursesAdapter?.submitData(it as MutableList<Course>)
         })
 
         viewModel.getCourseCount().observe(viewLifecycleOwner, {

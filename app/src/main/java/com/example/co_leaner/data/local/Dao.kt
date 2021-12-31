@@ -1,4 +1,4 @@
-package com.example.co_leaner.room
+package com.example.co_leaner.data.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -17,7 +17,7 @@ interface CourseDao {
     fun insertCourse(course: Course)
 
     @Delete
-    fun deleteCourse(course: Course)
+    suspend fun deleteCourse(course: Course): Int
 
     @Query("SELECT COUNT(DISTINCT courseId) FROM course")
     fun getCoursesCount() : LiveData<Int>

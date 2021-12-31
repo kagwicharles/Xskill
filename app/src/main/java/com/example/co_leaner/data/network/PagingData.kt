@@ -1,8 +1,7 @@
-package com.example.co_leaner.data
+package com.example.co_leaner.data.network
 
 import androidx.paging.*
 import com.example.co_leaner.model.Courses
-import com.example.co_leaner.network.CoursesApiService
 import kotlinx.coroutines.flow.Flow
 
 //Get data from the network

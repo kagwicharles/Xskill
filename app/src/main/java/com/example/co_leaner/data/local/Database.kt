@@ -1,4 +1,4 @@
-package com.example.co_leaner.room
+package com.example.co_leaner.data.local
 
 import android.content.Context
 import androidx.room.Room

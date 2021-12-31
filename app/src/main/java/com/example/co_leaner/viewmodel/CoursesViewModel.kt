@@ -7,12 +7,12 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.co_leaner.data.CoursesRepository
+import com.example.co_leaner.data.local.Course
+import com.example.co_leaner.data.network.CoursesRepository
 import com.example.co_leaner.model.Courses
-import com.example.co_leaner.room.Course
-import com.example.co_leaner.room.Repo
+import com.example.co_leaner.data.local.Repo
 import kotlinx.coroutines.flow.Flow
-import org.jetbrains.anko.doAsync
+import kotlinx.coroutines.launch
 
 class CoursesViewModel(context: Context) : ViewModel() {
 
@@ -26,7 +26,7 @@ class CoursesViewModel(context: Context) : ViewModel() {
     val myCourses: LiveData<List<Course>>? = repo.myCourses?.asLiveData()
 
     fun deleteCourse(course: Course) {
-        doAsync {
+        viewModelScope.launch {
             repo.deleteCourse(course)
         }
     }

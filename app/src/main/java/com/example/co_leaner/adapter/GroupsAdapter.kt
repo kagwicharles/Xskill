@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.co_leaner.R
-import com.example.co_leaner.room.Group
+import com.example.co_leaner.data.local.Group
 import com.example.co_leaner.util.Utils
 
 class GroupsAdapter(val context: Context) : RecyclerView.Adapter<GroupsAdapter.GroupsViewHolder>() {

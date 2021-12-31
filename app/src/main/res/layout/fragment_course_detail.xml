@@ -16,9 +16,14 @@
             android:id="@+id/imgCourseImage"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundedImageBg"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"/>
 
         <TextView
             android:id="@+id/txtClass"
@@ -68,12 +73,12 @@
             app:layout_constraintTop_toBottomOf="@+id/txtClass" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/txtInstructors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="20dp"
-            android:text="Instructors"
+            android:text="@string/instructors"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtCourseTitle" />
@@ -86,9 +91,10 @@
             android:nestedScrollingEnabled="false"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
+            android:overScrollMode="never"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/txtInstructors" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

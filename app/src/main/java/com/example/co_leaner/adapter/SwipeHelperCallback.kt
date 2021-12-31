@@ -29,10 +29,9 @@ class SwipeHelperCallback(
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        val position = viewHolder.adapterPosition
-        val course = adapter.getCourse(position)
+        val course = adapter.getCourse(viewHolder.position)
+        adapter.removeCourse(viewHolder.position)
         viewModel.deleteCourse(course)
-        adapter.notifyItemRemoved(position)
         Utils.showSnackBar(
             context?.getString(R.string.delete_course),
             fragment.activity?.findViewById(R.id.mainLinearLayout)
