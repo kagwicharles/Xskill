@@ -47,7 +47,6 @@ class CourseDetailFragment : Fragment() {
         activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)?.visibility =
             GONE
 
-        binding.txtInstructors.text = context?.getString(R.string.instructors)
         binding.rvInstructors.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
@@ -62,6 +61,7 @@ class CourseDetailFragment : Fragment() {
                 courseImage = coursesResponse?.image_480x270
                 courseUrl = coursesResponse?.url
 
+                binding.txtInstructors.text = context?.getString(R.string.instructors)
                 binding.txtCourseTitle.text = courseTitle
                 Utils.setImage(requireContext(), courseImage, binding.imgCourseImage)
                 binding.txtPrice.text = coursesResponse?.price
