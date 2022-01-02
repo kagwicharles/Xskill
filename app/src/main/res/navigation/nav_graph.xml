@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.co_leaner.ui.HomeFragment"
+        android:name="com.example.xskill.ui.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -16,17 +16,17 @@
 
     <fragment
         android:id="@+id/groupsFragment"
-        android:name="com.example.co_leaner.ui.GroupsFragment"
+        android:name="com.example.xskill.ui.GroupsFragment"
         android:label="fragment_groups"
         tools:layout="@layout/fragment_groups" />
     <fragment
         android:id="@+id/myCoursesFragment"
-        android:name="com.example.co_leaner.ui.MyCoursesFragment"
+        android:name="com.example.xskill.ui.MyCoursesFragment"
         android:label="fragment_my_courses"
         tools:layout="@layout/fragment_my_courses" />
     <fragment
         android:id="@+id/coursesFragment"
-        android:name="com.example.co_leaner.ui.CoursesFragment"
+        android:name="com.example.xskill.ui.CoursesFragment"
         android:label="fragment_courses"
         tools:layout="@layout/fragment_courses">
         <argument
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/courseDetailFragment"
-        android:name="com.example.co_leaner.ui.CourseDetailFragment"
+        android:name="com.example.xskill.ui.CourseDetailFragment"
         android:label="fragment_course_detail"
         tools:layout="@layout/fragment_course_detail" />
 </navigation>
