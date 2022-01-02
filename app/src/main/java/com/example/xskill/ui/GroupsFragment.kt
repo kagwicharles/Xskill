@@ -5,7 +5,6 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.xskill.R
 import com.example.xskill.adapter.GroupsAdapter
 import com.example.xskill.databinding.FragmentGroupsBinding
@@ -39,7 +38,7 @@ class GroupsFragment : Fragment() {
 
         val groupsAdapter = GroupsAdapter(requireContext())
         binding.rvMyGroups.apply {
-            layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             adapter = groupsAdapter
             isNestedScrollingEnabled = false
         }
