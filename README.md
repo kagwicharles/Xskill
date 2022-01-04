@@ -13,3 +13,5 @@ This application also provides the users an option to enroll and join into group
 <img src="images/Course_categories.jpg" width="400"/> <img src="images/Course_details.jpg" width="400"/>
 
 <img src="images/Take_course.jpg" width="400"/>
+
+<img src="images/Group.jpg" width="400"/>
